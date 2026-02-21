@@ -36,11 +36,11 @@ exporting the initial definitions.
 **Purpose**: Core infrastructure that MUST be complete before ANY user story can
 be implemented.
 
-- [ ] T005 Create deterministic ASCII Renderer test fixtures and unit tests in
+- [x] T005 Create deterministic ASCII Renderer test fixtures and unit tests in
       `packages/core/src/tools/visualize/asciiRenderer.test.ts` (TDD RED)
-- [ ] T006 Implement base `AsciiRenderer` box-drawing utility in
+- [x] T006 Implement base `AsciiRenderer` box-drawing utility in
       `packages/core/src/tools/visualize/asciiRenderer.ts`
-- [ ] T007 Create cache persistence logic definition mapping
+- [x] T007 Create cache persistence logic definition mapping
       `VisualizeCacheEntry` using `config.storage.getProjectTempDir()` in the
       core tool directory.
 
@@ -61,21 +61,21 @@ producing a diagram.
 
 > **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T008 [P] [US1] Create unit tests for parsing standard visualization
+- [x] T008 [P] [US1] Create unit tests for parsing standard visualization
       requests in `packages/core/src/tools/visualize.test.ts`
-- [ ] T009 [P] [US1] Create tool skeleton registration validation tests.
+- [x] T009 [P] [US1] Create tool skeleton registration validation tests.
 
 ### Implementation for User Story 1
 
-- [ ] T010 [US1] Implement `VisualizeTool` class extending standard BaseTool in
+- [x] T010 [US1] Implement `VisualizeTool` class extending standard BaseTool in
       `packages/core/src/tools/visualize.ts`
-- [ ] T011 [US1] Integrate `AsciiRenderer` within `VisualizeTool` to parse
+- [x] T011 [US1] Integrate `AsciiRenderer` within `VisualizeTool` to parse
       `VisualizationRequest` and output string graph arrays.
-- [ ] T012 [US1] Add caching interceptor within `VisualizeTool` leveraging
+- [x] T012 [US1] Add caching interceptor within `VisualizeTool` leveraging
       `refresh_cache` and `VisualizationRequest` hashes.
-- [ ] T013 [US1] Register tool in `createToolRegistry()` within
+- [x] T013 [US1] Register tool in `createToolRegistry()` within
       `packages/core/src/config/config.ts`.
-- [ ] T014 [US1] Export definition in
+- [x] T014 [US1] Export definition in
       `packages/core/src/tools/definitions/coreTools.ts` and
       `ALL_BUILTIN_TOOL_NAMES`.
 
@@ -93,17 +93,17 @@ architecture flow or displays standard help.
 
 ### Tests for User Story 2 ⚠️
 
-- [ ] T015 [P] [US2] Create slash command parser tests in
+- [x] T015 [P] [US2] Create slash command parser tests in
       `packages/cli/src/ui/commands/visualizeCommand.test.ts`
 
 ### Implementation for User Story 2
 
-- [ ] T016 [US2] Implement `/visualize` slash command entrypoint in
+- [x] T016 [US2] Implement `/visualize` slash command entrypoint in
       `packages/cli/src/ui/commands/visualizeCommand.ts` (Mapping free-form args
       to `VisualizationRequest`).
-- [ ] T017 [US2] Register command in the UI loader at
+- [x] T017 [US2] Register command in the UI loader at
       `packages/cli/src/services/BuiltinCommandLoader.ts`.
-- [ ] T018 [US2] Add standard terminal wrap constraints handling to the Ink
+- [x] T018 [US2] Add standard terminal wrap constraints handling to the Ink
       output rendering layer if graph exceeds columns.
 
 **Checkpoint**: Users can hit `/visualize "Auth Flow"` directly and see the
@@ -121,17 +121,17 @@ graph in a standard node project folder.
 
 ### Tests for User Story 3 ⚠️
 
-- [ ] T019 [P] [US3] Create dependency parsing fixture tests (with/without
+- [x] T019 [P] [US3] Create dependency parsing fixture tests (with/without
       manifests present) in `packages/core/src/tools/visualize.test.ts`.
 
 ### Implementation for User Story 3
 
-- [ ] T020 [US3] Implement Node wrapper logic to parse `package.json` into
+- [x] T020 [US3] Implement Node wrapper logic to parse `package.json` into
       `DependencyManifest` interface inside
       `packages/core/src/tools/visualize.ts`.
-- [ ] T021 [US3] Implement tree generation translating `DependencyManifest`
+- [x] T021 [US3] Implement tree generation translating `DependencyManifest`
       output into `AsciiRenderer`.
-- [ ] T022 [US3] Add graceful error strings for missing manifest directories.
+- [x] T022 [US3] Add graceful error strings for missing manifest directories.
 
 **Checkpoint**: The tool natively maps dependencies mechanically without needing
 LLM inferences.
@@ -142,8 +142,8 @@ LLM inferences.
 
 **Purpose**: Improvements that affect multiple user stories
 
-- [ ] T023 [P] Ensure all TS compiler rules pass (`npm run typecheck`).
-- [ ] T024 [P] Ensure UI truncation tests pass standard VTE wrapping
+- [x] T023 [P] Ensure all TS compiler rules pass (`npm run typecheck`).
+- [x] T024 [P] Ensure UI truncation tests pass standard VTE wrapping
       specifications dynamically.
 - [ ] T025 Execute `npm run preflight` to run full integration checks before
       commit.

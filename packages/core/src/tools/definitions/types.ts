@@ -45,6 +45,7 @@ export interface CoreToolSet {
   save_memory: FunctionDeclaration;
   write_todos: FunctionDeclaration;
   get_internal_docs: FunctionDeclaration;
+  visualize: FunctionDeclaration;
   ask_user: FunctionDeclaration;
   enter_plan_mode: FunctionDeclaration;
   exit_plan_mode: (plansDir: string) => FunctionDeclaration;

@@ -23,6 +23,7 @@ import {
   READ_MANY_FILES_TOOL_NAME,
   MEMORY_TOOL_NAME,
   GET_INTERNAL_DOCS_TOOL_NAME,
+  VISUALIZE_TOOL_NAME,
   ASK_USER_TOOL_NAME,
   ENTER_PLAN_MODE_TOOL_NAME,
 } from '../base-declarations.js';
@@ -560,6 +561,50 @@ The agent did not use the todo list because this task could be completed by a ti
           type: 'string',
         },
       },
+    },
+  },
+
+  visualize: {
+    name: VISUALIZE_TOOL_NAME,
+    description:
+      'Explains codebase architecture and structures dynamically using ASCII diagram rendering. When requested to map dependencies, parses manifests automatically to tree node layouts. Triggers when users ask to explain architecture, map relationships, or review dependency tree components visually.',
+    parametersJsonSchema: {
+      type: 'object',
+      properties: {
+        intent: {
+          type: 'string',
+          description:
+            "Specific diagram operation logic required: 'architecture' for logic graphs and structural queries; 'dependency' exclusively for node package or python manifest relationships.",
+          enum: ['architecture', 'dependency'],
+        },
+        prompt: {
+          type: 'string',
+          description:
+            'The specific query dictating what sub-graph of logic or entities to extract.',
+        },
+        targets: {
+          type: 'array',
+          description:
+            "Explicit source file strings (e.g., ['src/router/index.ts']) bounding the visual context search.",
+          items: { type: 'string' },
+        },
+        diagram_type: {
+          type: 'string',
+          description: 'Optional mapping structure constraint.',
+          enum: ['flowchart', 'sequence', 'class', 'auto'],
+        },
+        max_nodes: {
+          type: 'integer',
+          description:
+            'Integer boundary specifying truncation limits of the layout size. Falls back to deterministic hard limits.',
+        },
+        refresh_cache: {
+          type: 'boolean',
+          description:
+            'Flag to bypass explicit temporary storage maps and execute deep architectural evaluation regardless.',
+        },
+      },
+      required: ['intent', 'prompt'],
     },
   },
 

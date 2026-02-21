@@ -34,6 +34,7 @@ export {
   READ_MANY_FILES_TOOL_NAME,
   MEMORY_TOOL_NAME,
   GET_INTERNAL_DOCS_TOOL_NAME,
+  VISUALIZE_TOOL_NAME,
   ACTIVATE_SKILL_TOOL_NAME,
   ASK_USER_TOOL_NAME,
   EXIT_PLAN_MODE_TOOL_NAME,
@@ -152,6 +153,13 @@ export const GET_INTERNAL_DOCS_DEFINITION: ToolDefinition = {
     return DEFAULT_LEGACY_SET.get_internal_docs;
   },
   overrides: (modelId) => getToolSet(modelId).get_internal_docs,
+};
+
+export const VISUALIZE_DEFINITION: ToolDefinition = {
+  get base() {
+    return DEFAULT_LEGACY_SET.visualize;
+  },
+  overrides: (modelId) => getToolSet(modelId).visualize,
 };
 
 export const ASK_USER_DEFINITION: ToolDefinition = {

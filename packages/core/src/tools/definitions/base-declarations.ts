@@ -22,6 +22,8 @@ export const WRITE_FILE_TOOL_NAME = 'write_file';
 export const EDIT_TOOL_NAME = 'replace';
 export const WEB_SEARCH_TOOL_NAME = 'google_web_search';
 
+export const VISUALIZE_TOOL_NAME = 'visualize';
+
 export const WRITE_TODOS_TOOL_NAME = 'write_todos';
 export const WEB_FETCH_TOOL_NAME = 'web_fetch';
 export const READ_MANY_FILES_TOOL_NAME = 'read_many_files';
