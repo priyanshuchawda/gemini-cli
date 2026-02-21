@@ -20,13 +20,13 @@ data-model.md, contracts/
 existing monorepo, setup just involves creating the new file skeletons and
 exporting the initial definitions.
 
-- [ ] T001 Define `VISUALIZE_TOOL_NAME` constant in
+- [x] T001 Define `VISUALIZE_TOOL_NAME` constant in
       `packages/core/src/tools/definitions/base-declarations.ts`
-- [ ] T002 Update `CoreToolSet` interface with `visualize: FunctionDeclaration`
+- [x] T002 Update `CoreToolSet` interface with `visualize: FunctionDeclaration`
       in `packages/core/src/tools/definitions/types.ts`
-- [ ] T003 [P] Add visualize schema from `contracts/visualize-schema.json` to
+- [x] T003 [P] Add visualize schema from `contracts/visualize-schema.json` to
       `packages/core/src/tools/definitions/model-family-sets/default-legacy.ts`
-- [ ] T004 [P] Add visualize schema from `contracts/visualize-schema.json` to
+- [x] T004 [P] Add visualize schema from `contracts/visualize-schema.json` to
       `packages/core/src/tools/definitions/model-family-sets/gemini-3.ts`
 
 ---
