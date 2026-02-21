@@ -70,12 +70,14 @@ class VisualizeToolInvocation extends BaseToolInvocation<
           const manifest = await DependencyParser.parseNodeManifest(targetDir);
           const treeNode = DependencyParser.manifestToTree(manifest);
           diagram = AsciiRenderer.renderTree(treeNode);
-        } catch (depError: any) {
+        } catch (depError: unknown) {
+          const errMsg =
+            depError instanceof Error ? depError.message : String(depError);
           return {
-            llmContent: `Could not parse dependencies: ${depError.message}`,
-            returnDisplay: `Could not parse dependencies: ${depError.message}`,
+            llmContent: `Could not parse dependencies: ${errMsg}`,
+            returnDisplay: `Could not parse dependencies: ${errMsg}`,
             error: {
-              message: depError.message,
+              message: errMsg,
               type: ToolErrorType.EXECUTION_FAILED,
             },
           };

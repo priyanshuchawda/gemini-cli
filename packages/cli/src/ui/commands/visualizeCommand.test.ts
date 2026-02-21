@@ -18,8 +18,10 @@ describe('visualizeCommand', () => {
 
     const result = await visualizeCommand.action!(mockContext, '');
     expect(result).toBeDefined();
-    expect((result as any).messageType).toBe('info');
-    expect((result as any).content).toContain('Usage: /visualize');
+    expect((result as { messageType: string }).messageType).toBe('info');
+    expect((result as { content: string }).content).toContain(
+      'Usage: /visualize',
+    );
   });
 
   it('handles config absent', async () => {
@@ -33,7 +35,9 @@ describe('visualizeCommand', () => {
       mockContext,
       'architecture test',
     );
-    expect((result as any).messageType).toBe('error');
-    expect((result as any).content).toContain('Config not available');
+    expect((result as { messageType: string }).messageType).toBe('error');
+    expect((result as { content: string }).content).toContain(
+      'Config not available',
+    );
   });
 });

@@ -13,6 +13,7 @@ import {
 import {
   VisualizeTool,
   type VisualizationRequest,
+  type MessageBus,
 } from '@google/gemini-cli-core';
 
 export const visualizeCommand: SlashCommand = {
@@ -64,7 +65,11 @@ export const visualizeCommand: SlashCommand = {
       // Create and validate the tool natively
       const messageBus = config.getMessageBus ? config.getMessageBus() : null;
       // Depending on the exact method, fallback to generic approach or cast
-      const tool = new VisualizeTool(config, messageBus as any);
+      const tool = new VisualizeTool(
+        config,
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
+        messageBus as unknown as MessageBus,
+      );
       const result = await tool.validateBuildAndExecute(
         request,
         new AbortController().signal,

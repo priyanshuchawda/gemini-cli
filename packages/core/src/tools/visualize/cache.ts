@@ -40,7 +40,9 @@ export class VisualizeCache {
     const filePath = path.join(cacheDir, `${hash}.json`);
     try {
       const data = await fs.readFile(filePath, 'utf-8');
-      return JSON.parse(data) as unknown as VisualizeCacheEntry;
+      const parsed: unknown = JSON.parse(data);
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
+      return parsed as VisualizeCacheEntry;
     } catch {
       return null;
     }

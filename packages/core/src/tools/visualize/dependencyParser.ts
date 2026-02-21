@@ -24,14 +24,23 @@ export class DependencyParser {
     const manifestPath = path.join(dirPath, 'package.json');
     try {
       const content = await fs.readFile(manifestPath, 'utf-8');
-      return JSON.parse(content) as DependencyManifest;
-    } catch (error: any) {
-      if (error.code === 'ENOENT') {
+      const parsed: unknown = JSON.parse(content);
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
+      return parsed as DependencyManifest;
+    } catch (error: unknown) {
+      if (
+        typeof error === 'object' &&
+        error !== null &&
+        'code' in error &&
+        error.code === 'ENOENT'
+      ) {
         throw new Error(
           `No package.json found in ${dirPath}. Visualizer requires a manifest for dependency mapping.`,
         );
       }
-      throw new Error(`Failed to read or parse package.json: ${error.message}`);
+      throw new Error(
+        `Failed to read or parse package.json: ${error instanceof Error ? error.message : String(error)}`,
+      );
     }
   }
 
